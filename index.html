@@ -4,10 +4,130 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vanilla</title>
+    <title>FOrmulaire</title>
   </head>
   <body>
-    <div id="app"></div>
+    <h1 class="text-4xl font-bold text-blue-600 p-9">Accueil</h1>
+    <h2>formulaire</h2>
+    <nav aria-label="Etape">
+      <ol class="flex w-full justify-center gap-5">
+        <a class="#" id="txt_etape1"><li >Etape 1</li></a>
+        <li id="txt_etape2"><a class="#">Etape 2</a></li>
+        <li id="txt_etape3"><a class="#">Etape 3</a></li>
+      </ol>
+    </nav>
+    <form action="" class="m-6" id="formulaire" >
+      <fieldset class="border-1 p-6" id="etape1" role="radiogroup" aria-required="true" aria-invalid="true" aria-describedby="err_radio">
+        <legend>Dons</legend>
+        <!--Montant de l'argent-->
+        <ul class="">
+          <li>
+            <label for="montant">100$</label>
+            <input type="radio" name="montant" id="montant">
+          </li>
+
+          <li>
+            <label for="montant">75$</label>
+            <input type="radio" name="montant" id="montant">            
+          </li>
+
+          <li>
+            <label for="montant">50$</label>
+            <input type="radio" name="montant" id="montant">            
+          </li>
+
+          <li>
+            <label for="montant">25$</label>
+            <input type="radio" name="montant" id="montant">            
+          </li>
+
+          <li>
+            <label for="montant">autres</label>
+            <input type="text" id="txt-montant" class="border-1" pattern="^\d{1,2}$">            
+          </li>
+
+        </ul>
+      </fieldset>
+
+      <!--<span id="err_radio">Vous devez choisir un montant</span>-->
+
+      <fieldset class="p-6 border-1" id="etape2">
+        <legend>Information</legend>
+        <!-- formulaire pour courriel-->
+         <label for="courriel">courriel*</label>
+         <input type="email" id="courriel" class="border-1" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" required>
+
+        <!-- formulaire pour Nom-->
+        <label for="nom">nom*</label>
+        <input type="text" id="nom" class="border-1" pattern="^[a-zA-ZÀ-ÿ]+$" required>
+
+        <!--formulaire pour Prenom-->
+        <label for="prenom">prenom*</label>    
+        <input type="text" id="prenom" class="border-1" pattern="^[a-zA-ZÀ-ÿ]+$" required>  
+
+        <!--formulaire de Pays-->
+        <label for="pays">Pays*</label>
+        <select name="pays" id="pays" class="border-1" required>
+          <option value="vide">option</option>
+          <option value="Canada">Canada</option>
+          <option value="France">France</option>
+          <option value="Espagne">Espagne</option>
+          <option value="Royaume-Unis">Royaume-Unis</option>
+        </select>
+
+        <!--formulaire de ville-->
+        <label for="ville">Ville*</label>
+        <select name="ville" id="ville" class="border-1" required>
+          <option value="vide">option</option>
+          <option value="Montreal">Montreal</option>
+          <option value="Quebec">Quebec</option>
+        </select>
+
+        <!--formulaire de code postal-->
+        <label for="codePostal">Code postal*</label>
+        <input type="text" id="codePostal" class="border-1" pattern="^[a-zA-Z][0-9][a-zA-Z] [0-9][a-zA-Z][0-9]$" required>
+
+        <!--formulaire champ province-->
+        <label for="province">province*</label>
+        <select name="province" id="province" class="border-1" required>
+          <option value="vide">option</option>
+          <option value="Quebec">Quebec</option>
+        </select>
+
+        <!--formulaire champ adresse civique-->
+        <label for="adresse1">Adresse civique 1*</label>
+        <input type="text" id="adresse1" class="border-1" pattern="^[0-9]+[a-zA-ZÀ-ÿ0-9 \-]+$" required>
+        
+        <label for="adresse2">Adresse civique 2</label>
+        <input type="text" name="adresse2" id="adresse2" class="border-1" pattern="^[0-9]+[a-zA-ZÀ-ÿ0-9 \-]+$">
+
+        <!--formulaire champ numero de telephone-->
+        <label for="numero">Numero de telephone</label>
+        <input type="tel" id="numero" class="border-1">
+      </fieldset>
+
+      <fieldset class="p-6 border-1" id="etape3">
+        <legend>Moyen de paiement</legend>
+        <!--formulaire nom sur la carte-->
+        <!--formulaire choix des cartes a faire button radio a cocher-->
+        <label for="nomCarte">Nom du titulaire de la carte*</label>
+        <input type="text" name="nomCarte" id="nomCarte" class="border-1" pattern="^[a-zA-ZÀ-ÿ]+$" required>
+        <!--formulaire numero de carte-->
+        <label for="carteNumero">Numero de carte*</label>
+        <input type="text" name="carteNumero" id="carteNumero" class="border-1" pattern="^[0-9]{4}[ ]?[0-9]{4}[ ]?[0-9]{4}[ ]?[0-9]{4}$" required>
+        <!--formulaire carte expiration-->
+        <label for="dateExpiration">Date d'expiration*</label>
+        <input type="month" name="dateExpiration" id="dateExpiration" class="border-1" pattern="^\d{4}-(0[1-9]|1[0-2])$" required>
+        <!--formulaire code -->
+        <label for="code">Code a 3 4 chiffres*</label>
+        <input type="text" name="code" id="code" class="border-1" pattern="^\d{3,4}$" required> 
+        <label for="anonymat">Envoyer de l'argent anonymat</label>
+        <input type="checkbox" name="anonymat" id="anonymat">
+      </fieldset>
+      <button class="border-1" id="retour">Retour</button>
+      <button class="border-1" id="suivant">Suivant</button>
+      <input type="submit" class="" id="bouton-submit">
+    </form>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

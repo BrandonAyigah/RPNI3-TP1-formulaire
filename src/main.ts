@@ -1,60 +1,177 @@
 import './style.css'
-import heroImg from './assets/hero.png'
-import typescriptLogo from './assets/typescript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.ts'
+addEventListener("load",initialiser);
+document.getElementById('suivant')?.addEventListener('click', ()=>{
+    naviguerEtape(++etapeActuelle);
+});
+document.getElementById('retour')?.addEventListener('click',()=>{
+   naviguerEtape(--etapeActuelle);
+});
+addEventListener('change',validerEtape)
+//blur ou change pour les input 
+let etapeActuelle = 1;
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${typescriptLogo}" class="framework" alt="TypeScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started by person</h1>
-    <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+interface messageErreur {
+    vide?: string;
+    pattern?: string;
+    type?: string;
+}
 
-<div class="ticks"></div>
+interface erreursJSON {
+    [fieldName: string]: messageErreur;
+}
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://www.typescriptlang.org" target="_blank">
-          <img class="button-icon" src="${typescriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+let messagesJSON:erreursJSON;
+async function obtenirMessages(): Promise<void> {
+    const reponse = await fetch('objJSONMessages.json');
+    messagesJSON = await reponse.json();
+    console.log(messagesJSON);
+}
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+function initialiser(){
+    console.log("initialisation");
+    
+    document.getElementById("etape2")?.classList.add("hidden");
+    document.getElementById("etape3")?.classList.add("hidden");
+    document.getElementById("bouton-submit")?.classList.add("hidden");
+    document.getElementById('txt_etape2')?.classList.add('hidden');
+    document.getElementById('txt_etape3')?.classList.add('hidden');
+
+    obtenirMessages();
+}
+
+function naviguerEtape(etape:number){
+    let etapeValide = false;
+    
+    switch(etape){
+        case etape = 1:
+            console.log('renvoie etape1');
+            document.getElementById("etape1")?.classList.remove("hidden");
+            document.getElementById("etape2")?.classList.add("hidden");
+            document.getElementById("etape3")?.classList.add("hidden");
+            document.getElementById('txt_etape1')?.classList.remove('hidden');
+            document.getElementById('txt_etape2')?.classList.add('hidden');
+            document.getElementById('txt_etape3')?.classList.add('hidden');
+            document.getElementById("bouton-submit")?.classList.add("hidden");
+            document.getElementById("suivant")?.classList.remove("hidden");
+
+            console.log('debut de la validation');
+            //Validation du bouton radio
+            let radio = document.querySelector<HTMLInputElement>('input[name="montant"]:checked');
+            let champMontant = document.getElementById('txt-montant') as HTMLInputElement;
+            if(radio?.checked || champMontant.value.trim() !== ""){
+                console.log("Le prix du don est bien choisit");  
+            }else{
+                console.log("ne marche pas "+ radio?.value);
+            }
+            break;
+        case etape = 2:
+            console.log('renvoie etape 2');
+            document.getElementById("etape1")?.classList.add('hidden')
+            document.getElementById("etape2")?.classList.remove("hidden");
+            document.getElementById('txt_etape1')?.classList.add('hidden');
+            document.getElementById('txt_etape2')?.classList.remove('hidden');
+            document.getElementById('txt_etape3')?.classList.add('hidden');
+            document.getElementById("suivant")?.classList.remove("hidden");
+            document.getElementById("bouton-submit")?.classList.add("hidden");
+            document.getElementById("etape3")?.classList.add("hidden");
+
+            const nomElement = document.getElementById('nom') as HTMLInputElement;
+            const prenomElement = document.getElementById('prenom') as HTMLInputElement;
+            const emailElement = document.getElementById('courriel') as HTMLInputElement;
+            const telephoneElement = document.getElementById('numero') as HTMLInputElement;
+
+            const nomValide  = validerChamp(nomElement);
+            const prenomValide = validerChamp(prenomElement);
+            const emailValide = validerChamp(emailElement);
+            const telephoneValide = validerChamp(telephoneElement);
+
+            if(!nomValide || !prenomValide || !emailValide || !telephoneValide) {
+                etapeValide = false;
+                console.log("non valide")
+            }
+            else{
+                etapeValide = true;
+                console.log("yesssss")
+            }
+            break;
+        case etape = 3:
+            console.log('renvoie etape 3');
+            document.getElementById("etape1")?.classList.add("hidden");
+            document.getElementById("etape2")?.classList.add("hidden");
+            document.getElementById('txt_etape1')?.classList.add('hidden');
+            document.getElementById('txt_etape2')?.classList.add('hidden');
+            document.getElementById('txt_etape3')?.classList.remove('hidden');
+            document.getElementById("etape3")?.classList.remove("hidden");
+            document.getElementById("suivant")?.classList.add("hidden");
+            document.getElementById("bouton-submit")?.classList.remove("hidden");
+
+            break;
+        case etape = 4:
+            console.log('renvoie etape 4');
+            break;
+        }
+}
+
+
+//validity
+ function validerChamp(champ:HTMLInputElement):boolean{
+    let valide = false;
+    const id  = champ.id;
+    const idErreur  = "erreur-" + id;
+    const erreurElement = document.getElementById(idErreur) as HTMLDivElement;
+
+    console.log('valider champ', champ.validity);
+
+    if (champ.validity.valueMissing && messagesJSON[id].vide) {
+        console.log('erreur', id);
+        
+        valide = false;
+        erreurElement.innerText = messagesJSON[id].vide;
+    } 
+    else if (champ.validity.typeMismatch && messagesJSON[id].type) {
+        // Type de données incorrect (email, url, tel, etc.)
+        valide = false;
+        erreurElement.innerText = messagesJSON[id].type;
+    } 
+    else if (champ.validity.patternMismatch && messagesJSON[id].pattern) {
+        // Ne correspond pas au pattern regex défini
+        valide = false;
+        erreurElement.innerText = messagesJSON[id].pattern;
+    }
+    else {
+        // La validation n'a pas d'erreur, donc on assigne la variable vraie
+        valide = true;
+    }
+
+    return valide;
+
+ }
+
+ function validerEtape(){
+    console.log('debut de la validation');
+    //Validation du bouton radio
+     let radio = document.querySelector<HTMLInputElement>('input[name="montant"]:checked');
+     let champMontant = document.getElementById('txt-montant') as HTMLInputElement;
+     if(radio?.checked || champMontant.value.trim() !== ""){
+        console.log("Le prix du don est bien choisit");  
+    }else{
+        console.log("ne marche pas "+ radio?.value);
+    }
+
+
+    //Validation du 
+ };
+
+
+
+
+
+
+// function etape2(){
+//     document.getElementById("suivant")?.removeEventListener("click",etape2);     
+//     console.log("etape2");
+//     document.getElementById("etape2")?.classList.remove("hidden");
+
+// }
+
