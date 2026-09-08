@@ -44,6 +44,7 @@ function naviguerEtape(etape:number){
     let etapeValide = false;
     
     switch(etape){
+        
         case etape = 1:
             console.log('renvoie etape1');
             document.getElementById("etape1")?.classList.remove("hidden");
