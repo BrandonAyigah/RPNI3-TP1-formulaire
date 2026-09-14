@@ -18,5 +18,20 @@
     },
     "message": {
         "vide": "Entrez un message."
+    },
+    "pays" :{
+        "vide" :"Vous devez chosir votre pays"
+    },
+    "ville":{
+        "vide" :"Vous devez entrer votre ville."
+    },
+    "adresse1":{
+        "vide":"Entrez un adresse valide.",
+        "pattern": "Assurez-vous d'entrer une adresse valide.",
+        "type":"Assurez-vous d'entrer une adresse ."
+    },
+    "montant": {
+        "vide": "Vous devez chosir un montant"
     }
+    
 }
