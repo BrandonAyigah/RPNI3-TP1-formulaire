@@ -19,19 +19,47 @@
     "message": {
         "vide": "Entrez un message."
     },
-    "pays" :{
-        "vide" :"Vous devez chosir votre pays"
-    },
-    "ville":{
-        "vide" :"Vous devez entrer votre ville."
-    },
+    "montant": {
+        "vide": "Vous devez chosir un montant"
+    }, 
     "adresse1":{
         "vide":"Entrez un adresse valide.",
         "pattern": "Assurez-vous d'entrer une adresse valide.",
         "type":"Assurez-vous d'entrer une adresse ."
     },
-    "montant": {
-        "vide": "Vous devez chosir un montant"
+    "ville":{
+        "vide" :"Vous devez entrer votre ville."
+    },
+    "pays" :{
+        "vide" :"Vous devez chosir votre pays"
+    },
+    "codePostal" :{
+        "vide":"Entrez un code postal.",
+        "pattern": "Assurez-vous d'entrer un code postal dans le bon format.",
+        "type":"Assurez-vous d'entrer un code postal ." 
+    },
+    "province": {
+        "vide" :"Entrez une province."
+    },
+    "nomCarte":{
+        "vide":"Entrez votre nom de carte",
+        "pattern": "Assurez-vous d'entrer le nom de carte dans le bon format .",
+        "type":"Assurez-vous d'entrer un bon format ." 
+    },
+    "carteNumero":{
+        "vide":"Entrez votre le numero de carte",
+        "pattern": "Assurez-vous d'entrer le numero de carte dans le bon format .",
+        "type":"Assurez-vous d'entrer un bon format ." 
+    },
+    "dateExpiration":{
+        "vide":"Entrez une date d'expiration valide",
+        "pattern": "Assurez-vous d'entrer la date d'expiration dans le bon format .",
+        "type":"Assurez-vous d'entrer un bon format ." 
+    },
+    "code":{
+        "vide":"Entrez un code valide",
+        "pattern": "Assurez-vous d'entrer un code dans le bon format .",
+        "type":"Assurez-vous d'entrer un bon format ." 
     }
     
 }

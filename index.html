@@ -4,49 +4,59 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOrmulaire</title>
+    <title>Formulaire</title>
   </head>
   <body>
-    <h1 class="text-4xl font-bold text-blue-600 p-9">Accueil</h1>
-    <h2>formulaire</h2>
+    <h1 class="text-7xl font-bold flex justify-center m-12">Formulaire de Don</h1>
+    <h2></h2>
     <nav aria-label="Etape">
       <ol class="flex w-full justify-center gap-5">
-        <a class="#" id="txt_etape1"><li >Etape 1</li></a>
-        <li id="txt_etape2"><a class="#">Etape 2</a></li>
-        <li id="txt_etape3"><a class="#">Etape 3</a></li>
+        <li id="txt_etape1" class="border-3 text-5xl p-4 pr-8 pl-8 rounded-full">1</li>
+        <img src="./src/assets/Fleche hover.png" alt="" srcset="">
+        <li id="txt_etape2" class="border-3 text-5xl p-4 pr-8 pl-8 rounded-full">2</li>
+        <img src="./src/assets/Fleche hover.png" alt="" srcset="">
+        <li id="txt_etape3" class="border-3 text-5xl p-4 pr-8 pl-8 rounded-full">3</li>
+        <img src="./src/assets/Fleche hover.png" alt="" srcset="">
+        <li id="txt_etape4" class="border-3 text-5xl p-4 pr-8 pl-8 rounded-full">4</li>
       </ol>
     </nav>
-    <form action="" class="m-6" id="formulaire" >
-      <fieldset class="border-1 p-6" id="etape1" role="radiogroup" aria-required="true" aria-invalid="true" aria-describedby="err_radio">
-        <legend>Dons</legend>
+    <form action="" class="m-8" id="formulaire" >
+      <fieldset class="" id="etape1" role="radiogroup" aria-required="true" aria-invalid="true" aria-describedby="err_radio">
+        <legend class="text-5xl pb-5">Dons</legend>
+        <p class="text-2xl">Voulez-vous faire un don unique ou faire des dons mensuelle ?</p>
+        <div class="flex justify-center gap-5 pt-7">
+          <button type="button" class="border-3 text-5xl p-8 pl-14 pr-14 rounded-xl" id="unique">Unique</button>
+          <button type="button" class="border-3 text-5xl p-8 pl-14 pr-14  rounded-xl"  id="mensuelle">Mensuelle</button>
+        </div>
         <!--Montant de l'argent-->
-        <ul class="">
+        <ul class="flex pt-14 pb-14">
+          <p class="text-2xl pb-5">Combien voulez-vous donner</p>
           <li>
-            <label for="montant">100$</label>
-            <input type="radio" name="montant" id="montant" required>
+            <label for="montant" class="text-5xl border-3 rounded-xl p-8 bg-red-500">100$</label>
+            <input type="radio" name="montant" value="100$" id="montant" class="sr-only" required>
           </li>
 
           <li>
-            <label for="montant">75$</label>
-            <input type="radio" name="montant" id="montant" required>            
+            <label for="montant" class="text-5xl border-3 p-8 bg-red-500 rounded-xl">75$</label>
+            <input type="radio" name="montant" value="75$" id="montant" class="sr-only" required>            
           </li>
 
           <li>
-            <label for="montant">50$</label>
-            <input type="radio" name="montant" id="montant" required>            
+            <label for="montant" class="text-5xl border-3 rounded-xl bg-red-500 p-8">50$</label>
+            <input type="radio" name="montant" value="50$" id="montant" aria-label="50$" class="sr-only" required>            
           </li>
 
           <li>
-            <label for="montant">25$</label>
-            <input type="radio" name="montant" id="montant" required>            
+            <label for="montant" class="text-5xl border-3 rounded-xl bg-red-500 p-8">25$</label>
+            <input type="radio" name="montant" value="25$" id="montant" class="sr-only" required>            
           </li>
 
           <li>
-            <label for="montant">autres</label>
-            <input type="text" id="txt-montant" class="border-1" pattern="^\d{1,2}$">            
-          </li>
-          <span id="erreur-montant"></span>
+            <label for="montant" >autres</label>
+            <input type="text" id="txt-montant" value=" " class="border-1 rounded-full" pattern="^\d{1,2}$">            
+          </li>   
         </ul>
+        <span id="erreur-montant" class="text-red-500"></span>
       </fieldset>
 
       <!--<span id="err_radio">Vous devez choisir un montant</span>-->
@@ -55,64 +65,64 @@
         <legend>Information</legend>
         <!-- formulaire pour courriel-->
          <label for="courriel">courriel*</label>
-         <input type="email" id="courriel" class="border-1" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" required>
-         <span id="erreur-courriel"></span>
+         <input type="email" id="courriel" class="border-1 rounded-full" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" required>
+         <span id="erreur-courriel" class="text-red-500"></span>
 
         <!-- formulaire pour Nom-->
         <label for="nom">nom*</label>
-        <input type="text" id="nom" class="border-1" pattern="^[a-zA-ZÀ-ÿ]+$" required>
-        <span id="erreur-nom"></span>
+        <input type="text" id="nom" class="border-1 rounded-full" pattern="^[a-zA-ZÀ-ÿ]+$" required>
+        <span id="erreur-nom" class="text-red-500"></span>
 
         <!--formulaire pour Prenom-->
         <label for="prenom">prenom*</label>    
-        <input type="text" id="prenom" class="border-1" pattern="^[a-zA-ZÀ-ÿ]+$" required>  
-        <span id="erreur-prenom"></span>
+        <input type="text" id="prenom" class="border-1 rounded-full" pattern="^[a-zA-ZÀ-ÿ]+$" required>  
+        <span id="erreur-prenom" class="text-red-500"></span>
 
         <!--formulaire de Pays-->
         <label for="pays">Pays*</label>
-        <select name="pays" id="pays" class="border-1" required>
-          <option value="vide">option</option>
+        <select name="pays" id="pays" class="border-1 rounded-full" required>
+          <option value="">option</option>
           <option value="Canada">Canada</option>
           <option value="France">France</option>
           <option value="Espagne">Espagne</option>
           <option value="Royaume-Unis">Royaume-Unis</option>
         </select>
-        <span id="erreur-pays"></span>
+        <span id="erreur-pays" class="text-red-500"></span>
 
         <!--formulaire de ville-->
         <label for="ville">Ville*</label>
-        <select name="ville" id="ville" class="border-1" required>
-          <option value="vide">option</option>
+        <select name="ville" id="ville" class="border-1 rounded-full" required>
+          <option value="">option</option>
           <option value="Montreal" >Montreal</option>
           <option value="Quebec">Quebec</option>
         </select>
-        <span id="erreur-ville"></span>
+        <span id="erreur-ville" class="text-red-500"></span>
 
         <!--formulaire de code postal-->
         <label for="codePostal">Code postal*</label>
-        <input type="text" id="codePostal" class="border-1" pattern="^[a-zA-Z][0-9][a-zA-Z] [0-9][a-zA-Z][0-9]$" required>
-        <span id="erreur-codePostal"></span>
+        <input type="text" id="codePostal" class="border-1 rounded-full" pattern="^[a-zA-Z][0-9][a-zA-Z] [0-9][a-zA-Z][0-9]$" required>
+        <span id="erreur-codePostal" class="text-red-500"></span>
 
         <!--formulaire champ province-->
         <label for="province">province*</label>
-        <select name="province" id="province" class="border-1" required>
-          <option value="vide">option</option>
+        <select name="province" id="province" class="border-1 rounded-full" required>
+          <option value="">option</option>
           <option value="Quebec">Quebec</option>
         </select>
-        <span id="erreur-province"></span>
+        <span id="erreur-province" class="text-red-500"></span>
 
         <!--formulaire champ adresse civique-->
         <label for="adresse1">Adresse civique 1*</label>
-        <input type="text" id="adresse1" class="border-1" pattern="^[0-9]+[a-zA-ZÀ-ÿ0-9 \-]+$" required>
-        <span id="erreur-adresse1"></span>
+        <input type="text" id="adresse1" class="border-1 rounded-full" pattern="^[0-9]+[a-zA-ZÀ-ÿ0-9 \-]+$" required>
+        <span id="erreur-adresse1" class="text-red-500"></span>
         
         <label for="adresse2">Adresse civique 2</label>
-        <input type="text" name="adresse2" id="adresse2" class="border-1" pattern="^[0-9]+[a-zA-ZÀ-ÿ0-9 \-]+$">
+        <input type="text" name="adresse2" id="adresse2" class="border-1 rounded-full" pattern="^[0-9]+[a-zA-ZÀ-ÿ0-9 \-]+$">
 
         <!--formulaire champ numero de telephone-->
         <label for="numero">Numero de telephone</label>
-        <input type="tel" id="numero" class="border-1">
-        <span id="erreur-numero"></span>
+        <input type="tel" id="numero" class="border-1 rounded-full">
+        <span id="erreur-numero" class="text-red-500"></span>
       </fieldset>
 
       <fieldset class="p-6 border-1 flex flex-col" id="etape3">
@@ -120,28 +130,46 @@
         <!--formulaire nom sur la carte-->
         <!--formulaire choix des cartes a faire button radio a cocher-->
         <label for="nomCarte">Nom du titulaire de la carte*</label>
-        <input type="text" name="nomCarte" id="nomCarte" class="border-1" pattern="^[a-zA-ZÀ-ÿ]+$" required>
-        <span id="erreur-nomCarte"></span>
+        <input type="text" name="nomCarte" id="nomCarte" class="border-1 rounded-full" pattern="^[a-zA-ZÀ-ÿ]+$" >
+        <span id="erreur-nomCarte" class="text-red-500"></span>
         <!--formulaire numero de carte-->
         <label for="carteNumero">Numero de carte*</label>
-        <input type="text" name="carteNumero" id="carteNumero" class="border-1" pattern="^[0-9]{4}[ ]?[0-9]{4}[ ]?[0-9]{4}[ ]?[0-9]{4}$" required>
-        <span id="erreur-carteNumero"></span>
+        <input type="text" name="carteNumero" id="carteNumero" class="border-1 rounded-full" pattern="^[0-9]{4}[ ]?[0-9]{4}[ ]?[0-9]{4}[ ]?[0-9]{4}$" >
+        <span id="erreur-carteNumero" class="text-red-500"></span>
         <!--formulaire carte expiration-->
         <label for="dateExpiration">Date d'expiration*</label>
-        <input type="month" name="dateExpiration" id="dateExpiration" class="border-1" pattern="^\d{4}-(0[1-9]|1[0-2])$" required>
-        <span id="erreur-dateExpiration"></span>
+        <input type="month" name="dateExpiration" id="dateExpiration" class="border-1 rounded-full" pattern="^\d{4}-(0[1-9]|1[0-2])$" required>
+        <span id="erreur-dateExpiration" class="text-red-500"></span>
         <!--formulaire code -->
         <label for="code">Code a 3 4 chiffres*</label>
-        <input type="text" name="code" id="code" class="border-1" pattern="^\d{3,4}$" required> 
-        <span id="erreur-code"></span>
+        <input type="text" name="code" id="code" class="border-1 rounded-full" pattern="^\d{3,4}$" required> 
+        <span id="erreur-code" class="text-red-500"></span>
 
         <!---ANONYMAT-->
+        <div id="anonymat" class=" flex flex-row-reverse justify-end">
         <label for="anonymat">Envoyer de l'argent anonymat</label>
         <input type="checkbox" name="anonymat" id="anonymat">
+        </div>
       </fieldset>
-      <button class="border-1" id="retour">Retour</button>
-      <button class="border-1" id="suivant">Suivant</button>
-      <input type="submit" class="" id="bouton-submit">
+      <fieldset id="etape4" class="border-1">
+        <legend>Resume du tout</legend>
+        <h2>Dons</h2>
+        <ul id="liste_don">
+          <li></li>
+        </ul>
+        <h2>Information</h2>
+        <ul id="liste_information">
+          <li></li>
+        </ul>
+        <h2>Mode de paiement</h2>
+        <ul id="liste_paiement">
+          <li></li>
+        </ul>
+
+      </fieldset>
+      <button class="border-1 mt-3" id="retour" type="button">Retour</button>
+      <button class="border-1 mt-3" id="suivant" type="button">Suivant</button>
+      <input type="submit" class=" mt-3" id="bouton-submit" >
     </form>
     <script type="module" src="/src/main.ts"></script>
   </body>
