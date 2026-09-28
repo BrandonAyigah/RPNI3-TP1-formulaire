@@ -185,7 +185,8 @@ function naviguerEtape(etape:number){
             const refUlPaiement = document.getElementById('liste_paiement');
             const refLiNomCarte = document.createElement('li') as HTMLElement;
             refLiNomCarte.innerText = 'Nom sur la carte : ' + arrResume['paiement']['nomCarte'] ;
-            refUlPaiement?.append(refLiNomCarte);
+            refUlPaiement?.append(refLiNomCarte); 
+            
 
             //Nom de la carte 
             const refLiNumCarte = document.createElement('li') as HTMLElement;
