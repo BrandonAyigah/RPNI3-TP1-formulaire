@@ -82,8 +82,8 @@ function naviguerEtape(etape:number){
             document.getElementById('txt_etape1')?.classList.add('border-red-500');
             document.getElementById("bouton-submit")?.classList.add("hidden");
             document.getElementById("suivant")?.classList.remove("hidden");
-
             break;
+            
         case 2:
             console.log('renvoie etape 2');
             document.getElementById("retour")?.classList.remove("hidden");
@@ -186,7 +186,7 @@ function naviguerEtape(etape:number){
             const refLiNomCarte = document.createElement('li') as HTMLElement;
             refLiNomCarte.innerText = 'Nom sur la carte : ' + arrResume['paiement']['nomCarte'] ;
             refUlPaiement?.append(refLiNomCarte); 
-            
+
 
             //Nom de la carte 
             const refLiNumCarte = document.createElement('li') as HTMLElement;
